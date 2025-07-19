@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Feito para a Eindhoven 💖</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦁</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+      
+        @keyframes floatingBubbles {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes sparkle {
+
+            0%,
+            100% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes cardSlideIn {
+            from {
+                transform: translateY(50px) scale(0.9);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes buttonPulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes textGlow {
+
+            0%,
+            100% {
+                text-shadow: 0 0 10px rgba(236, 72, 153, 0.3);
+            }
+
+            50% {
+                text-shadow: 0 0 20px rgba(236, 72, 153, 0.6), 0 0 30px rgba(236, 72, 153, 0.4);
+            }
+        }
+
+        .animated-bg {
+            background: linear-gradient(-45deg, #ff6b9d, #ce7e94, #d7b0f9, #93b1c5, #ec4899);
+            background-size: 400% 400%;
+            animation: gradientShift 25s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .bubble {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: floatingBubbles 15s infinite linear;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #fff;
+            border-radius: 50%;
+            animation: sparkle 2s infinite ease-in-out;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+            animation: cardSlideIn 0.8s ease-out;
+        }
+
+        .premium-btn {
+            background: linear-gradient(135deg, #ff6b9d, #ec4899);
+            color: white;
+            padding: 0.875rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.2);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-btn:hover {
+            box-shadow: 0 6px 20px rgba(236, 72, 153, 0.25);
+            opacity: 0.9;
+        }
+
+        .premium-btn:active {
+            transform: scale(0.98);
+        }
+
+        .premium-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .premium-btn:hover::before {
+            left: 100%;
+        }
+
+        .animated-title {
+            color: #fce7f3;
+        }
+
+        .input-field {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(236, 72, 153, 0.2);
+            border-radius: 12px;
+            padding: 0.875rem 1rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #ec4899;
+            box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .icon-pulse {
+            animation: buttonPulse 2s infinite;
+        }
+
+        .error-shake {
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-5px);
+            }
+
+            75% {
+                transform: translateX(5px);
+            }
+        }
+
+        .celebration-text {
+            background: linear-gradient(135deg, #ff6b9d, #ffa726, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textGlow 2s ease-in-out infinite;
+        }
+
+        /* Estilo para o scroll na mensagem final */
+        .message-container {
+            max-height: 70vh;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .message-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .message-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .message-container::-webkit-scrollbar-thumb {
+            background: rgba(236, 72, 153, 0.5);
+            border-radius: 10px;
+        }
+
+        .message-container::-webkit-scrollbar-thumb:hover {
+            background: rgba(236, 72, 153, 0.7);
+        }
+
+        /* Responsividade aprimorada */
+        @media (max-width: 640px) {
+            .glass-card {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            
+            .message-container {
+                max-height: 65vh;
+            }
+        }
+    </style>
+</head>
+
+<body class="animated-bg min-h-screen flex items-center justify-center relative">
+
+
+    <!-- Elementos flutuantes animados -->
+    <div class="floating-elements">
+        <div class="bubble" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="bubble" style="left: 20%; animation-delay: 2s;"></div>
+        <div class="bubble" style="left: 30%; animation-delay: 4s;"></div>
+        <div class="bubble" style="left: 40%; animation-delay: 6s;"></div>
+        <div class="bubble" style="left: 50%; animation-delay: 8s;"></div>
+        <div class="bubble" style="left: 60%; animation-delay: 10s;"></div>
+        <div class="bubble" style="left: 70%; animation-delay: 12s;"></div>
+        <div class="bubble" style="left: 80%; animation-delay: 14s;"></div>
+        <div class="sparkle" style="left: 15%; top: 20%; animation-delay: 0.5s;"></div>
+        <div class="sparkle" style="left: 85%; top: 30%; animation-delay: 1.5s;"></div>
+        <div class="sparkle" style="left: 25%; top: 70%; animation-delay: 2.5s;"></div>
+        <div class="sparkle" style="left: 75%; top: 80%; animation-delay: 3.5s;"></div>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div id="app" class="glass-card rounded-3xl shadow-2xl max-w-lg w-full text-center z-10 p-8">
+        <div class="mb-6">
+            <i class='bx bxs-heart text-5xl text-pink-300 icon-pulse mb-4'></i>
+            <h1 class="text-3xl font-bold animated-title mb-3">Estás bem nenê ? 😊</h1>
+            <p class="text-white/80 text-lg leading-relaxed">
+                Nenê ! Durante esse percurso, como gostarias de ser chamada ?
+            </p>
+        </div>
+
+        <div class="mb-6">
+            <p class="text-white/70 text-base mb-4">
+                Analize as suguestões
+            </p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+            <button class="premium-btn" onclick="escolherNome('Eindhoven')"> Eindhoven </button>
+            <button class="premium-btn" onclick="escolherNome('Amor')">Amor</button>
+            <button class="premium-btn" onclick="escolherNome('Amorzinho')">Amorzinho</button>
+            <button class="premium-btn" onclick="escolherNome('Princesinha')">Princesinha</button>
+            <button class="premium-btn" onclick="escolherNome('Nenê')">Nenê</button>
+            <button class="premium-btn" onclick="escolherNome('Env')"> Env </button>
+        </div>
+    </div>
+
+    <script>
+        let nomeEscolhido = "";
+
+        function escolherNome(nome) {
+            nomeEscolhido = nome;
+            const app = document.getElementById("app");
+
+            app.innerHTML = `
+        <div class="mb-6">
+          <h2 class="text-3xl font-bold animated-title mb-3"> Boa escolha 😘, ${nome}</h2>
+          <p class="text-white/80 text-lg">Você já completou 19 anos?</p>
+        </div>
+
+        <div class="flex justify-center gap-4">
+          <button class="premium-btn" onclick="respostaIdade(true)">
+           Já sim nenê
+          </button>
+          <button class="premium-btn bg-white/20 text-white hover:bg-white/30 hover:opacity-90" onclick="respostaIdade(false)">
+            Ainda
+          </button>
+        </div>
+      `;
+        }
+
+        function respostaIdade(resposta) {
+            const app = document.getElementById("app");
+
+            if (resposta) {
+                app.innerHTML = `
+          <div class="flex flex-col items-center">
+
+            <p class="text-white/70 text-base mb-6 leading-relaxed">
+              <i class='bx bxs-bulb text-white-300 mr-2'></i><span class="font-semibold">Dica:</span> A senha é bem simples ${nomeEscolhido}, é simplismente a hora que começamos a namorar, simm nenê, temos o mês, dia e a hora... e eu quero saber a hora, então não use o PM ou AM, use apenas o número, tipo: 23h ou algo assim. (apenas número)
+            </p>
+            <input id="senha" type="password" placeholder="Digite a senha" class="input-field mb-6 w-full" />
+            <button onclick="verificarLogin()" class="premium-btn w-full">
+              <i class='bx bx-log-in mr-2'></i>Entrar
+            </button>
+            <p id="mensagemErro" class="text-red-600 mt-4 font-semibold hidden">
+              <i class='bx bx-error-circle mr-1'></i>Senha incorreta ${nomeEscolhido}, Já não tens tantas tentativas
+            </p>
+          </div>
+        `;
+            } else {
+                app.innerHTML = `
+          <div class="text-center">
+            <h2 class="text-2xl font-bold text-white mb-4">
+              Então ainda não é a hora, ${nomeEscolhido}!
+            </h2>
+            <p class="text-white/70 text-base mb-6 leading-relaxed">
+              Que tal voltares quando fizeres 19 anos? Vai ser ainda mais especial
+            </p>
+            <button onclick="escolherNome('${nomeEscolhido}')" class="premium-btn bg-blue-500/30 text-white hover:bg-blue-500/50 hover:opacity-90">
+             Voltar
+            </button>
+          </div>
+        `;
+            }
+        }
+
+        function verificarLogin() {
+            const senha = document.getElementById("senha").value.trim();
+            const erro = document.getElementById("mensagemErro");
+
+            if (senha === "13") {
+                mostrarPergunta();
+            } else {
+                erro.classList.remove("hidden");
+                erro.classList.add("error-shake");
+                setTimeout(() => erro.classList.remove("error-shake"), 500);
+            }
+        }
+
+        function mostrarPergunta() {
+            const app = document.getElementById("app");
+
+            app.innerHTML = `
+        <div class="mb-6">
+          <i class='bx bxs-heart text-5xl text-pink-400 icon-pulse mb-4'></i>
+          <h1 class="text-3xl font-bold animated-title mb-4">Perfeito, acertou !! 😍</h1>
+          <p class="text-white/80 text-lg mb-6">Numa escala de 0% a 100%, quanto tu me amas? </p>
+        </div>
+        
+        <input id="resposta" type="number" min="0" max="100" placeholder="Digite a porcentagem..." class="input-field mb-6 w-full" />
+        <button onclick="processarPorcentagem()" class="premium-btn w-full">
+          <i class='bx bx-send mr-2'></i>Enviar
+        </button>
+      `;
+        }
+
+        function processarPorcentagem() {
+            const resposta = document.getElementById("resposta").value;
+            const porcentagem = parseInt(resposta);
+
+            if (!resposta || porcentagem < 0 || porcentagem > 100) {
+                alert("De 0 a 100 mãe 😅");
+                return;
+            }
+
+            mostrarPerguntaBolo();
+        }
+
+        function mostrarPerguntaBolo() {
+            const app = document.getElementById("app");
+
+            app.innerHTML = `
+        <div class="mb-6">
+          <i class='bx bxs-cake text-5xl text-yellow-400 icon-pulse mb-4'></i>
+          <h1 class="text-3xl font-bold animated-title mb-4">Mais uma pergunta, ${nomeEscolhido}!</h1>
+          <p class="text-white/80 text-lg mb-6"> Nenê, se tivesses a oportunidade de recuar no tempo, especificamente no dia que eu fui ter contigo, o que é que farias? Tipo, estás aqui agora e recuas no tempo para esse mesmo dia, o que é que podias dizer pra mim, ou o que é que podias fazer? Explica tudo, quero saber mesmo tudo, qual seria a tua reação a partir do momento que eu cahemei vc. E faça um print, porque a parte do JavaScript estava meio complicada nessa parte kkk, não tenho a certeza se vai guaradr a mensagem  </p>
+        </div>
+        
+        <textarea id="respostaBolo" placeholder="Escreve aqui..." class="input-field mb-6 w-full"> </textarea>
+
+        <button onclick="mostrarCarta()" class="premium-btn w-full">
+          <i class='bx bx-send mr-2'></i>Enviar
+        </button>
+      `;
+        }
+
+        function mostrarCarta() {
+            mostrarMensagemAmor();
+        }
+
+        function mostrarMensagemAmor() {
+            const app = document.getElementById("app");
+
+            app.innerHTML = `
+        <div class="text-center">
+          <i class='bx bxs-heart text-6xl text-red-400 heartbeat mb-6'></i>
+          <h1 class="text-3xl font-bold animated-title mb-6">
+            ${nomeEscolhido}...
+          </h1>
+          <div class="text-white/90 text-xl leading-relaxed space-y-4">
+            <p class="font-semibold">
+              Feliz aniversário 😍
+            </p>
+        
+            <p>
+              Clique em Continuar para conseguires visualizar a mensagem que preparei para ti ❤️. 
+            </p>
+            <p class="text-pink-300 font-bold">
+              E antes de continuar, só quero te lembrar que te amo minha nenê 🥺
+            </p>
+          </div>
+          <button onclick="iniciarContagem()" class="premium-btn mt-8 text-lg px-8">
+            <i class='bx bx-party mr-2'></i>Continuar
+          </button>
+        </div>
+      `;
+        }
+
+        function iniciarContagem() {
+            const app = document.getElementById("app");
+            let contador = 5;
+
+            function mostrarNumero() {
+                app.innerHTML = `
+          <div class="text-center">
+            <h2 class="text-2xl font-bold animated-title mb-8">
+              A carregar mensagem...
+            </h2>
+            <div class="countdown-number mb-8">
+              ${contador}
+            </div>
+            <p class="text-white/70 text-lg">
+              <i class='bx bxs-time text-yellow-400 mr-2'></i>Aguarde...
+            </p>
+          </div>
+        `;
+
+                contador--;
+
+                if (contador >= 0) {
+                    setTimeout(mostrarNumero, 1000);
+                } else {
+                    setTimeout(mostrarCartaFinal, 1000);
+                }
+            }
+
+            mostrarNumero();
+        }
+
+        function mostrarCartaFinal() {
+            const app = document.getElementById("app");
+
+            app.innerHTML = `
+        <div class="text-center">
+          <i class='bx bxs-party text-6xl text-yellow-400 mb-4'></i>
+          <h1 class="text-4xl font-bold mb-6 celebration-text">
+            <i class='bx bxs-party mr-2'></i>Feliz Aniversário amorzinho ❤️<i class='bx bxs-party ml-2'></i>
+          </h1>
+          <div class="message-container">
+            <div class="text-white/90 text-lg leading-relaxed space-y-4">
+              <p>
+               Muitos parabéns, minha neném. Hoje você acaba de completar 8.035 dias. Aproximadamente 😆
+              </p>
+              <p>
+                Hoje é um dia muito importante. Hoje, basicamente, é um dia onde você pisa para uma nova etapa da sua vida.
+              </p>
+              <p>
+                Uma etapa ou fase que carrega não apenas um novo número, mas também novas possibilidades, novos caminhos
+              </p>
+               <p>
+                que cada passo que deres aqui em diante seja firme, leve e cheio de propósito, que a luz brilhe ainda mais forte
+              </p>
+               <p>
+                e que nunca te falte coragem para seres quem és, para sonhar alto e viver e que cada amanhecer te lembre o quanto és especial.
+              </p>
+               <p>
+                 Hoje não é só mais um aniversário, é o recomeço de tudo aquilo que já és, e com ainda mais força
+              </p>
+               <p>
+               Eu, até agora, agradeço por fazeres parte da minha vida. A tua presença foi e continua a ser uma das maiores bênçãos que já recebi em cada momento vivido contigo. Mesmo nos mais silenciosos, houve aprendizado, houve cuidado, houve amor.
+              </p>
+               <p>
+               Contigo também aprendi que carinho também se mostra no jeito de ouvir, no tempo partilhado, no apoio silencioso quando as palavras falham.
+              </p>
+               <p>
+                 Aprendi que amar também é crescer juntos, cair e levantar de mãos dadas, rir até doer a barriga kkkk e chorar com o peito aberto sem medo.
+              </p>
+               <p>
+                 Por isso, quero que saibas que te amo muito 🥺❤️. Eindhoven Alexandra Leão Dos Santos Diogo Não sei se errei mais kkkk, mas espero que não 😅.
+              </p>
+              <p>
+                Feliz aniversário nenê !
+              </p>
+               <p>
+                Escrito por Arbin 😊
+              </p>
+              <p class="text-2xl font-bold text-pink-300 mt-6">
+                Te amo muito! <i class='bx bxs-heart text-red-400'></i>
+              </p>
+            </div>
+          </div>
+        </div>
+      `;
+        }
+
+        // Adiciona mais elementos flutuantes dinamicamente
+        setInterval(() => {
+            const floatingContainer = document.querySelector('.floating-elements');
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.style.left = Math.random() * 100 + '%';
+            bubble.style.animationDelay = '0s';
+            floatingContainer.appendChild(bubble);
+
+            setTimeout(() => {
+                bubble.remove();
+            }, 15000);
+        }, 3000);
+    </script>
+</body>
+
+</html>
